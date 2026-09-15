@@ -1,0 +1,24 @@
+name: Import Lex Prospect
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-lex-prospect.yml'
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Importar site atual
+        run: |
+          curl -fL --retry 3 'https://painel-prospeccao-lex.eulampiosuzanne.chatgpt.site/' -o index.html
+          test -s index.html
+      - name: Salvar fonte no repositorio
+        run: |
+          git config user.name 'Lex Prospect Bot'
+          git config user.email 'actions@github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Importar codigo completo da Lex Prospect'
+          git push
