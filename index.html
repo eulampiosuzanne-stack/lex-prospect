@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Painel Lex Prospect para captação, qualificação e gestão de leads jurídicos.">
+  <meta name="description" content="Painel Lex Prospect para captação, qualificação e gestão de leads jurídicos.">\n  <meta name="theme-color" content="#09090b">\n  <meta name="mobile-web-app-capable" content="yes">\n  <meta name="apple-mobile-web-app-capable" content="yes">\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n  <meta name="apple-mobile-web-app-title" content="Lex Prospect">\n  <link rel="manifest" href="/manifest.webmanifest">\n  <link rel="apple-touch-icon" href="/icon.svg">
   <title>Lex Prospect — Painel de Prospecção</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2309090b'/%3E%3Cpath d='M18 15v25c0 8 6 12 14 12s14-4 14-12V15h-6v24c0 5-3 7-8 7s-8-2-8-7V15z' fill='%23ef2b36'/%3E%3Cpath d='M28 18h8v21h-8z' fill='%23f4f4f5'/%3E%3C/svg%3E">
   <style>
@@ -173,5 +173,5 @@ async function prepareLexPost(id){const s=await lexSession();if(!s)return alert(
 document.getElementById('gerarPost').onclick=async()=>{const st=document.getElementById('postStatus');st.textContent='Gerando…';try{const s=await lexSession();if(!s)throw new Error('Entre na Lex Prospect para gerar conteúdo.');const r=await fetch(LEX_URL+'/functions/v1/generate-post-script',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.access_token,'apikey':LEX_KEY},body:JSON.stringify({objetivo:postObjetivo.value,tipo_post:postTipo.value,tema:postTema.value||undefined})});const j=await r.json();if(!r.ok||j.error)throw new Error(j.error||'Falha ao gerar');st.textContent='Conteúdo gerado e salvo.';postTema.value='';loadLexPosts()}catch(e){st.textContent='Erro: '+e.message}};loadLexPosts();loadSocialAccounts();
 refreshLexAuth();
 </script>
-</body>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}</script>\n</body>
 </html>
