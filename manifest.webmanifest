@@ -1,0 +1,18 @@
+{
+  "name": "Lex Prospect",
+  "short_name": "Lex Prospect",
+  "description": "Painel de prospecção e atendimento jurídico inteligente",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
