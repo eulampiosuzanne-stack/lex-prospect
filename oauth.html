@@ -21,12 +21,12 @@ const db=supabase.createClient(SB_URL,SB_KEY,{auth:{detectSessionInUrl:true,pers
 const oauth=SB_URL+'/functions/v1/lex-prospect-oauth',statusEl=document.getElementById('status');
 const keys=['client_id','redirect_uri','response_type','state','scope','code_challenge','code_challenge_method'];
 let params=new URLSearchParams(location.search);
-if(params.get('client_id'))sessionStorage.setItem('lex_oauth_request',JSON.stringify(Object.fromEntries(keys.map(k=>[k,params.get(k)||'']))));
-const request=JSON.parse(sessionStorage.getItem('lex_oauth_request')||'{}');
+if(params.get('client_id'))localStorage.setItem('lex_oauth_request',JSON.stringify(Object.fromEntries(keys.map(k=>[k,params.get(k)||'']))));
+const request=JSON.parse(localStorage.getItem('lex_oauth_request')||'{}');
 function msg(s){statusEl.textContent=s}
 async function render(){const {data:{session}}=await db.auth.getSession();document.getElementById('login').hidden=!!session;document.getElementById('consent').hidden=!session;if(session)msg('Conta confirmada. Revise e autorize o acesso.')}
 document.getElementById('send').onclick=async()=>{const email=document.getElementById('email').value.trim();if(!email)return msg('Informe seu e-mail.');msg('Enviando link seguro…');const redirect=location.origin+location.pathname+location.search;const {error}=await db.auth.signInWithOtp({email,options:{emailRedirectTo:redirect}});msg(error?error.message:'Link enviado. Abra o e-mail neste mesmo navegador.')};
-document.getElementById('approve').onclick=async()=>{const {data:{session}}=await db.auth.getSession();if(!session)return render();msg('Autorizando…');const r=await fetch(oauth+'/authorize',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+session.access_token},body:JSON.stringify(request)});const j=await r.json();if(!r.ok)return msg(j.message||j.error||'Não foi possível autorizar.');location.href=j.redirect_to};
+document.getElementById('approve').onclick=async()=>{const {data:{session}}=await db.auth.getSession();if(!session)return render();if(!request.client_id||!request.redirect_uri)return msg('A autorização expirou. Volte ao ChatGPT e conecte novamente.');msg('Autorizando…');const r=await fetch(oauth+'/authorize',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+session.access_token},body:JSON.stringify(request)});const j=await r.json();if(!r.ok)return msg(j.message||j.error||'Não foi possível autorizar.');location.href=j.redirect_to};
 document.getElementById('logout').onclick=async()=>{await db.auth.signOut();render()};
 db.auth.onAuthStateChange(()=>setTimeout(render,0));render();
 </script></body></html>
