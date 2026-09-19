@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Autorizar Lex Prospect</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif}body{margin:0;background:#0b0b0d;color:#f5f5f5;min-height:100vh;display:grid;place-items:center}.card{width:min(520px,calc(100% - 32px));background:#151519;border:1px solid #2b2b31;border-radius:18px;padding:28px;box-sizing:border-box;box-shadow:0 20px 60px #0008}h1{margin:0 0 10px;font-size:24px}p{color:#b8b8c2;line-height:1.5}.badge{display:inline-block;color:#ff6b6b;background:#351416;border:1px solid #652126;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}label{display:block;margin:18px 0 7px;font-size:13px}input{width:100%;box-sizing:border-box;background:#0d0d10;border:1px solid #34343b;border-radius:10px;color:#fff;padding:12px}button{width:100%;margin-top:14px;padding:12px;border:0;border-radius:10px;background:#d62828;color:#fff;font-weight:800;cursor:pointer}button.secondary{background:#26262c}.status{min-height:22px;margin-top:14px;color:#ffb4b4;font-size:13px}.scope{background:#0d0d10;border-radius:10px;padding:12px;margin:16px 0;color:#d6d6dc;font-size:14px}
+</style>
+</head>
+<body><main class="card">
+<span class="badge">ACESSO PRIVADO</span><h1>Conectar ChatGPT Work</h1>
+<p>Autorize o ChatGPT Work a consultar e operar internamente a Lex Prospect. Publicações, disparos e exclusões continuam dependendo de confirmação.</p>
+<div id="login"><label for="email">E-mail autorizado</label><input id="email" type="email" autocomplete="email" placeholder="seu e-mail"><button id="send">Enviar link de acesso</button><p>Você receberá um link seguro por e-mail. Depois, esta autorização continuará automaticamente.</p></div>
+<div id="consent" hidden><div class="scope">Permissão solicitada: consultar leads, campanhas e posts, além de executar ações internas autorizadas.</div><button id="approve">Autorizar Lex Prospect</button><button id="logout" class="secondary">Trocar conta</button></div>
+<div class="status" id="status"></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script>
+<script>
+const SB_URL='https://jnctyowjstchfofqfhnm.supabase.co',SB_KEY='sb_publishable_ZBPR_AtzIi2kYH8XO1Jffg_iKnCdE0X';
+const db=supabase.createClient(SB_URL,SB_KEY,{auth:{detectSessionInUrl:true,persistSession:true}});
+const oauth=SB_URL+'/functions/v1/lex-prospect-oauth',statusEl=document.getElementById('status');
+const keys=['client_id','redirect_uri','response_type','state','scope','code_challenge','code_challenge_method'];
+let params=new URLSearchParams(location.search);
+if(params.get('client_id'))sessionStorage.setItem('lex_oauth_request',JSON.stringify(Object.fromEntries(keys.map(k=>[k,params.get(k)||'']))));
+const request=JSON.parse(sessionStorage.getItem('lex_oauth_request')||'{}');
+function msg(s){statusEl.textContent=s}
+async function render(){const {data:{session}}=await db.auth.getSession();document.getElementById('login').hidden=!!session;document.getElementById('consent').hidden=!session;if(session)msg('Conta confirmada. Revise e autorize o acesso.')}
+document.getElementById('send').onclick=async()=>{const email=document.getElementById('email').value.trim();if(!email)return msg('Informe seu e-mail.');msg('Enviando link seguro…');const redirect=location.origin+location.pathname+location.search;const {error}=await db.auth.signInWithOtp({email,options:{emailRedirectTo:redirect}});msg(error?error.message:'Link enviado. Abra o e-mail neste mesmo navegador.')};
+document.getElementById('approve').onclick=async()=>{const {data:{session}}=await db.auth.getSession();if(!session)return render();msg('Autorizando…');const r=await fetch(oauth+'/authorize',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+session.access_token},body:JSON.stringify(request)});const j=await r.json();if(!r.ok)return msg(j.message||j.error||'Não foi possível autorizar.');location.href=j.redirect_to};
+document.getElementById('logout').onclick=async()=>{await db.auth.signOut();render()};
+db.auth.onAuthStateChange(()=>setTimeout(render,0));render();
+</script></body></html>
