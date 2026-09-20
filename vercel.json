@@ -63,10 +63,6 @@
   ],
   "rewrites": [
     {
-      "source": "/landing",
-      "destination": "/landing.html"
-    },
-    {
       "source": "/campanha",
       "destination": "/campanha.html"
     }
