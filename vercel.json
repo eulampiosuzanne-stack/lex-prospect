@@ -1,0 +1,74 @@
+{
+  "redirects": [
+    {
+      "source": "/parcerias/rede-de-apoio",
+      "destination": "/campanha?t=rede-de-apoio",
+      "permanent": false
+    },
+    {
+      "source": "/parcerias/advogados",
+      "destination": "/campanha?t=parcerias-advogados",
+      "permanent": false
+    },
+    {
+      "source": "/parcerias/cartorios",
+      "destination": "/campanha?t=cartorios",
+      "permanent": false
+    },
+    {
+      "source": "/parcerias/protecao-infantil",
+      "destination": "/campanha?t=protecao-infantil",
+      "permanent": false
+    },
+    {
+      "source": "/empresas/apresentacao",
+      "destination": "/campanha?t=empresas",
+      "permanent": false
+    },
+    {
+      "source": "/empresas/prevencao-juridica",
+      "destination": "/campanha?t=prevencao",
+      "permanent": false
+    },
+    {
+      "source": "/empresas/dividas-bancarias",
+      "destination": "/campanha?t=dividas-empresariais",
+      "permanent": false
+    },
+    {
+      "source": "/diagnostico-bancario",
+      "destination": "/campanha?t=bancario",
+      "permanent": false
+    },
+    {
+      "source": "/planejamento-sucessorio",
+      "destination": "/campanha?t=planejamento-sucessorio",
+      "permanent": false
+    },
+    {
+      "source": "/consumidor/diagnostico",
+      "destination": "/campanha?t=consumidor",
+      "permanent": false
+    },
+    {
+      "source": "/bancario/financiamento-veiculo",
+      "destination": "/campanha?t=financiamento-veiculo",
+      "permanent": false
+    },
+    {
+      "source": "/conteudos/orientacao-juridica",
+      "destination": "/campanha?t=orientacao",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/landing",
+      "destination": "/landing.html"
+    },
+    {
+      "source": "/campanha",
+      "destination": "/campanha.html"
+    }
+  ]
+}

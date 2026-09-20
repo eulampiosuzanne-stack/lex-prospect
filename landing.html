@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050303">
+<title>Suzanne Figueiredo | Advocacia e Soluções Jurídicas</title>
+<meta name="description" content="Advocacia estratégica em Minas Gerais. Atendimento jurídico personalizado para decisões que exigem análise cuidadosa, comunicação clara e acompanhamento próximo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/bg.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
+
+<style>
+/* =====================================================================
+   Landing Suzanne Figueiredo
+   Composição fixa de 1536 x 1024 (proporção 3:2), escalada proporcionalmente.
+   Toda medida abaixo é escrita em "u" (1u = 1 px da imagem de referência)
+   e convertida para cqw no build: 1536u = 100% da largura da tela.
+   Nada é reorganizado no celular: a composição inteira só diminui.
+   ===================================================================== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#050303;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
+body{background:#050303;color:#f4eeea;overflow-x:hidden;
+  font-family:Newsreader,"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  font-optical-sizing:none;font-variation-settings:"opsz" 14;font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+
+.stage{width:100%;container-type:inline-size;overflow:hidden}
+.canvas{position:relative;width:100%;height:66.6667vw;height:66.6667cqw;overflow:hidden;
+  background:#050303 url(/bg.png) 0 0/100% 100% no-repeat}
+.canvas>*{position:absolute}
+.canvas>header,.canvas>nav{position:static}
+.canvas header>*{position:absolute}
+.canvas header>.nav{left:0;top:0;position:static}
+.t{white-space:nowrap;line-height:1;font-style:normal}
+
+/* ---------- foto (região direita, moldura dourada já faz parte da fotografia) ---------- */
+.photo{left:44.9219vw;left:44.9219cqw;top:9.6354vw;top:9.6354cqw;width:55.0781vw;width:55.0781cqw;height:51.237vw;height:51.237cqw;z-index:1}
+.photo img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
+
+/* ---------- cabeçalho ---------- */
+.monogram{left:6.8685vw;left:6.8685cqw;top:0.9115vw;top:0.9115cqw;width:5.8529vw;width:5.8529cqw;height:6.901vw;height:6.901cqw;z-index:3}
+.monogram img{display:block;width:100%;height:100%}
+.brand{left:3.8151vw;left:3.8151cqw;top:8.3529vw;top:8.3529cqw;font-size:1.5365vw;font-size:1.5365cqw;letter-spacing:0.0938vw;letter-spacing:0.0938cqw;color:#fefaf6;z-index:3}
+.brand-sub{left:3.8672vw;left:3.8672cqw;top:10.2734vw;top:10.2734cqw;font-size:0.8372vw;font-size:0.8372cqw;letter-spacing:0.1374vw;letter-spacing:0.1374cqw;color:#cbab7c;z-index:3}
+.nav a{position:absolute;font-size:1.1589vw;font-size:1.1589cqw;color:#f6efe9;z-index:3;transition:color .2s}
+.nav a:hover{color:#e6c48c}
+.nav-ul{left:30.4688vw;left:30.4688cqw;top:5.5664vw;top:5.5664cqw;width:3.9714vw;width:3.9714cqw;height:0.1432vw;height:0.1432cqw;background:linear-gradient(90deg,#c53a48,#d4485a 50%,#c53a48);z-index:3;border-radius:0.0651vw;border-radius:0.0651cqw}
+.cta-top{left:75.9115vw;left:75.9115cqw;top:2.4089vw;top:2.4089cqw;width:20.8984vw;width:20.8984cqw;height:3.6458vw;height:3.6458cqw;border-radius:0.5859vw;border-radius:0.5859cqw;z-index:4;
+  border:0.0846vw solid rgba(228,132,116,.78);
+  border:0.0846cqw solid rgba(228,132,116,.78);
+  background:linear-gradient(90deg,#7d0c16 0%,#4b0a10 40%,#26030a 100%);
+  box-shadow:0 0 0.9115vw rgba(190,40,40,.38),inset 0 0 0.651vw rgba(255,90,80,.10);
+  box-shadow:0 0 0.9115cqw rgba(190,40,40,.38),inset 0 0 0.651cqw rgba(255,90,80,.10);transition:filter .2s}
+
+/* ---------- botões ---------- */
+.btn{display:block;z-index:4;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.12)}
+.btn-wa{left:5.2734vw;left:5.2734cqw;top:47.2331vw;top:47.2331cqw;width:19.9219vw;width:19.9219cqw;height:3.9714vw;height:3.9714cqw;border-radius:0.3906vw;border-radius:0.3906cqw;
+  border:0.0781vw solid rgba(235,120,112,.62);
+  border:0.0781cqw solid rgba(235,120,112,.62);
+  background:linear-gradient(90deg,#bc1626 0%,#8b0f1d 40%,#3b050b 80%,#2a0308 100%);
+  box-shadow:0 0 0.9766vw rgba(200,35,45,.5),inset 0 0 0.5859vw rgba(255,95,90,.14);
+  box-shadow:0 0 0.9766cqw rgba(200,35,45,.5),inset 0 0 0.5859cqw rgba(255,95,90,.14)}
+.btn-ghost{left:26.6276vw;left:26.6276cqw;top:47.2331vw;top:47.2331cqw;width:15.4297vw;width:15.4297cqw;height:3.9714vw;height:3.9714cqw;border-radius:0.3581vw;border-radius:0.3581cqw;border:0.0846vw solid rgba(214,196,178,.92);border:0.0846cqw solid rgba(214,196,178,.92);background:rgba(0,0,0,.08)}
+.btn-ghost:hover{background:rgba(214,196,178,.10)}
+.wa-ico{position:absolute;pointer-events:none}
+.btn-label{color:#fff5f2}
+.btn-label.g{color:#f4ead8}
+
+/* ---------- hero ---------- */
+.eyebrow{left:5.2409vw;left:5.2409cqw;top:15.7747vw;top:15.7747cqw;font-size:0.931vw;font-size:0.931cqw;letter-spacing:0.1484vw;letter-spacing:0.1484cqw;color:#d5b98c;z-index:3}
+h1.hero-title{left:5.1107vw;left:5.1107cqw;top:18.5417vw;top:18.5417cqw;font-size:4.9479vw;font-size:4.9479cqw;line-height:4.8828vw;line-height:4.8828cqw;font-weight:400;color:#f4efea;white-space:nowrap;z-index:3}
+h1.hero-title em{font-style:italic;color:#d9ab6b}
+h1.hero-title em.pale{color:#f4e2bd;margin-left:0.4557vw;margin-left:0.4557cqw}
+h1.hero-title em.w1{margin-left:0.7161vw;margin-left:0.7161cqw}
+h1.hero-title em.w2{letter-spacing:0.0521vw;letter-spacing:0.0521cqw}
+.lead{left:5.1823vw;left:5.1823cqw;top:39.2969vw;top:39.2969cqw;font-size:1.5234vw;font-size:1.5234cqw;line-height:1.9531vw;line-height:1.9531cqw;color:#f6f1ec;white-space:nowrap;z-index:3}
+
+.benefit{z-index:3;font-size:0.918vw;font-size:0.918cqw;line-height:1.3672vw;line-height:1.3672cqw;color:#e8e3dd;white-space:nowrap}
+.b-ico{z-index:3;pointer-events:none}
+.b-sep{top:54.6875vw;top:54.6875cqw;width:0.0781vw;width:0.0781cqw;height:2.6042vw;height:2.6042cqw;z-index:3}
+
+/* ---------- texto sobre a fotografia ---------- */
+.quote{left:47.8841vw;left:47.8841cqw;top:23.6979vw;top:23.6979cqw;font-size:1.7969vw;font-size:1.7969cqw;line-height:2.4089vw;line-height:2.4089cqw;font-style:italic;color:#f7f3ef;white-space:nowrap;z-index:3;text-shadow:0 0 0.9115vw rgba(0,0,0,.35);text-shadow:0 0 0.9115cqw rgba(0,0,0,.35)}
+.quote .q1{letter-spacing:-0.0195vw;letter-spacing:-0.0195cqw}
+.quote .q2{letter-spacing:0.0156vw;letter-spacing:0.0156cqw}
+.quote-line{left:47.9167vw;left:47.9167cqw;top:30.0521vw;top:30.0521cqw;width:6.5104vw;width:6.5104cqw;height:0.0846vw;height:0.0846cqw;background:#c9a06f;z-index:3}
+.quote-name{left:47.8841vw;left:47.8841cqw;top:32.4609vw;top:32.4609cqw;font-size:0.931vw;font-size:0.931cqw;letter-spacing:0.125vw;letter-spacing:0.125cqw;color:#f1ebe5;z-index:3}
+.quote-oab{left:47.8841vw;left:47.8841cqw;top:34.069vw;top:34.069cqw;font-size:0.8398vw;font-size:0.8398cqw;letter-spacing:0.1367vw;letter-spacing:0.1367cqw;color:#ece2db;z-index:3}
+
+/* ---------- rodapé visual ---------- */
+.foot-line{left:0;top:60.8724vw;top:60.8724cqw;width:100%;height:0.0846vw;height:0.0846cqw;z-index:3;
+  background:linear-gradient(90deg,#231f1c 0%,#2f2b28 13%,#3f3c33 33%,#463d35 52%,#604e42 72%,#674d3c 91%,#402e22 100%)}
+.foot-hit{pointer-events:none;left:0;top:60.9375vw;top:60.9375cqw;width:100%;height:5.7292vw;height:5.7292cqw;z-index:2}
+.area{position:absolute;top:0;font-size:0.7422vw;font-size:0.7422cqw;letter-spacing:0.0195vw;letter-spacing:0.0195cqw;color:#dcd7d0;z-index:3;transition:color .2s}
+.area:hover{color:#e6c48c}
+.f-sep{position:absolute;top:63.4115vw;top:63.4115cqw;width:0.0781vw;width:0.0781cqw;height:0.9115vw;height:0.9115cqw;background:#6f665a;z-index:3}
+.motto-line{left:75.3255vw;left:75.3255cqw;top:63.8021vw;top:63.8021cqw;width:4.8828vw;width:4.8828cqw;height:0.0911vw;height:0.0911cqw;background:linear-gradient(90deg,#7a2a35,#a3222f 50%,#c22232);z-index:3}
+.motto{left:83.4245vw;left:83.4245cqw;top:62.7865vw;top:62.7865cqw;font-size:0.7422vw;font-size:0.7422cqw;line-height:1.1719vw;line-height:1.1719cqw;letter-spacing:0.0553vw;letter-spacing:0.0553cqw;color:#918a84;white-space:nowrap;z-index:3}
+
+.motto .m2{letter-spacing:0.0423vw;letter-spacing:0.0423cqw}
+.anchor{width:0.0651vw;width:0.0651cqw;height:0.0651vw;height:0.0651cqw;pointer-events:none;visibility:hidden}
+
+a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
+.btn:focus-visible,.cta-top:focus-visible{outline-offset:4px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---------- Áreas de atuação (abaixo da composição principal) ---------- */
+.areas{position:relative;background:radial-gradient(120% 90% at 0% 0%,rgba(120,12,26,.38),rgba(5,3,3,0) 55%),radial-gradient(90% 80% at 100% 100%,rgba(90,10,20,.30),rgba(5,3,3,0) 60%),#050303;
+  border-top:1px solid rgba(201,155,92,.55);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px) clamp(36px,5vw,64px)}
+.areas-in{max-width:1180px;margin:0 auto}
+.areas-eyebrow{font-size:clamp(11px,1.1vw,13px);letter-spacing:.34em;color:#cbab7c;text-transform:uppercase}
+.areas h2{font-weight:400;font-size:clamp(28px,4.2vw,52px);line-height:1.12;color:#fefaf6;margin:14px 0 14px}
+.areas h2 em{font-style:italic;color:#e2bc82}
+.areas-lead{max-width:640px;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#d9cfc6}
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);margin-top:clamp(26px,4vw,48px);list-style:none}
+.area-card{display:flex;flex-direction:column;padding:clamp(18px,2.2vw,28px);border:1px solid rgba(201,155,92,.30);border-radius:8px;
+  background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.008));transition:border-color .25s,transform .25s,background .25s}
+.area-card:hover{border-color:rgba(226,188,130,.85);transform:translateY(-3px);background:linear-gradient(160deg,rgba(150,20,36,.20),rgba(255,255,255,.01))}
+.area-n{font-size:13px;letter-spacing:.2em;color:#a8834f}
+.area-card h3{font-weight:400;font-size:clamp(17px,1.7vw,21px);letter-spacing:.2em;color:#e2bc82;margin:10px 0 10px;text-transform:uppercase}
+.area-card p{font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.6;color:#d3c9c0;flex:1}
+.area-link{display:inline-block;margin-top:16px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#f4ead8;border-bottom:1px solid rgba(226,188,130,.6);padding-bottom:3px;align-self:flex-start;transition:color .2s,border-color .2s}
+.area-link:hover{color:#e6c48c;border-color:#e6c48c}
+.area-card{position:relative;cursor:pointer}
+.area-link::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:8px;z-index:1}
+.area-card:hover .area-link{color:#e6c48c;border-color:#e6c48c}
+.area-card:focus-within{border-color:rgba(226,188,130,.85)}
+.areas-cta{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:clamp(34px,5vw,64px);gap:16px}
+.areas-cta p{font-size:clamp(17px,2vw,24px);color:#f4eeea;font-style:italic}
+.areas-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;border-radius:9px;border:1.3px solid rgba(228,132,116,.78);color:#fff5f2;
+  font-size:14px;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(90deg,#7d0c16 0%,#4b0a10 45%,#26030a 100%);
+  box-shadow:0 0 14px rgba(190,40,40,.38),inset 0 0 10px rgba(255,90,80,.10);transition:filter .2s}
+.areas-btn:hover{filter:brightness(1.15)}
+.areas-btn svg{width:22px;height:22px;flex:none}
+.areas-foot{margin-top:clamp(34px,5vw,60px);padding-top:22px;border-top:1px solid rgba(201,155,92,.25);text-align:center;font-size:13px;letter-spacing:.14em;color:#a89a8c;line-height:1.9}
+.areas-foot b{font-weight:400;color:#cbab7c}
+@media (max-width:900px){.areas-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.areas-grid{grid-template-columns:1fr}}
+
+/* ---------- Sobre / Depoimentos / rodapé ---------- */
+.sobre{background:#050303;border-top:1px solid rgba(201,155,92,.25);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px)}
+.sobre-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:clamp(24px,5vw,72px);align-items:center}
+.sobre-foto{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(201,155,92,.55);box-shadow:0 0 40px rgba(120,12,26,.35)}
+.sobre-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:100% 30%}
+.sobre h2,.depo h2{font-weight:400;font-size:clamp(28px,4vw,48px);line-height:1.12;color:#fefaf6;margin:14px 0 18px}
+.sobre h2 em,.depo h2 em{font-style:italic;color:#e2bc82}
+.sobre p.tx{font-size:clamp(15.5px,1.55vw,18.5px);line-height:1.7;color:#d9cfc6;margin-bottom:14px}
+.pilares{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;margin:26px 0 8px;list-style:none}
+.pilares li{display:flex;align-items:center;gap:14px;font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.35;color:#f0e6da}
+.pilares svg{flex:none;width:34px;height:34px}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);max-width:1180px;margin:clamp(34px,5vw,64px) auto 0;list-style:none;counter-reset:p}
+.passos li{position:relative;padding:22px 22px 20px;border-top:1px solid rgba(201,155,92,.55);background:linear-gradient(180deg,rgba(201,155,92,.07),rgba(255,255,255,0))}
+.passos li::before{counter-increment:p;content:"0" counter(p);display:block;font-size:13px;letter-spacing:.2em;color:#a8834f;margin-bottom:8px}
+.passos b{display:block;font-weight:400;font-size:clamp(16px,1.6vw,19px);letter-spacing:.16em;text-transform:uppercase;color:#e2bc82;margin-bottom:8px}
+.passos span{font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.6;color:#d3c9c0}
+.depo{background:radial-gradient(90% 100% at 50% 0%,rgba(120,12,26,.28),rgba(5,3,3,0) 65%),#050303;border-top:1px solid rgba(201,155,92,.25);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px);text-align:center}
+.depo-in{max-width:760px;margin:0 auto}
+.depo .q{font-size:clamp(46px,7vw,84px);line-height:.6;color:#c99b5c;font-style:italic;height:.5em}
+.depo p{font-size:clamp(15.5px,1.6vw,19px);line-height:1.7;color:#d9cfc6;margin-bottom:12px}
+.site-foot{border-top:1px solid rgba(201,155,92,.55);background:#030202;padding:26px clamp(18px,5vw,72px) 34px;text-align:center;font-size:13px;letter-spacing:.14em;color:#a89a8c;line-height:1.9}
+.site-foot b{font-weight:400;color:#cbab7c}
+@media (max-width:800px){.sobre-grid{grid-template-columns:1fr}.sobre-foto{max-width:420px;margin:0 auto;width:100%}.passos{grid-template-columns:1fr}}
+@media (max-width:420px){.pilares{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="stage">
+<div class="canvas" id="inicio">
+
+  <!-- Foto à direita (moldura dourada incluída) -->
+  <section class="photo" id="foto" aria-label="Suzanne Figueiredo">
+    <img src="/hero-photo.jpg" alt="Dra. Suzanne Figueiredo em seu escritório" width="1692" height="1574" decoding="async" fetchpriority="high" draggable="false">
+  </section>
+
+  <!-- Cabeçalho -->
+  <header>
+    <a class="monogram" href="#inicio" aria-label="Suzanne Figueiredo - início"><img src="/monogram.png" alt="Monograma SF" width="251" height="296"></a>
+    <a class="t brand" href="#inicio">SUZANNE FIGUEIREDO</a>
+    <div class="t brand-sub">ADVOCACIA E SOLUÇÕES JURÍDICAS</div>
+    <nav class="nav" aria-label="Principal">
+      <a class="t" style="left:31.0286vw;left:31.0286cqw;top:3.6198vw;top:3.6198cqw" href="#inicio" aria-current="page">Início</a>
+      <a class="t" style="left:36.7578vw;left:36.7578cqw;top:3.6198vw;top:3.6198cqw" href="#areas">Áreas de Atuação</a>
+      <a class="t" style="left:48.4766vw;left:48.4766cqw;top:3.6198vw;top:3.6198cqw" href="#sobre">Sobre</a>
+      <a class="t" style="left:54.3359vw;left:54.3359cqw;top:3.6198vw;top:3.6198cqw" href="#depoimentos">Depoimentos</a>
+      <a class="t" style="left:64.1016vw;left:64.1016cqw;top:3.6198vw;top:3.6198cqw" href="#contato" data-whatsapp>Contato</a>
+    </nav>
+    <span class="nav-ul" aria-hidden="true"></span>
+    <a class="cta-top" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"></a>
+    <svg class="wa-ico" style="left:77.6953vw;left:77.6953cqw;top:3.4245vw;top:3.4245cqw;width:1.6927vw;width:1.6927cqw;height:1.6602vw;height:1.6602cqw;z-index:5" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+    <span class="t btn-label" style="left:80.625vw;left:80.625cqw;top:3.7826vw;top:3.7826cqw;font-size:1.0221vw;font-size:1.0221cqw;letter-spacing:0.0221vw;letter-spacing:0.0221cqw;color:#fff5f2;z-index:5;pointer-events:none">FALAR COM O ESCRITÓRIO</span>
+  </header>
+
+  <!-- Hero esquerdo -->
+  <div class="t eyebrow">ADVOCACIA ESTRATÉGICA · MINAS GERAIS</div>
+  <h1 class="hero-title">Direito tratado<br>com <em class="w1">clareza,</em><br><em class="w2">estratégia</em> <em class="pale">e</em><br><em>presença.</em></h1>
+  <p class="lead">Atendimento jurídico personalizado para decisões<br>que exigem análise cuidadosa, comunicação clara<br>e acompanhamento próximo.</p>
+
+  <a class="btn btn-wa" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"></a>
+  <svg class="wa-ico" style="left:7.3112vw;left:7.3112cqw;top:48.3984vw;top:48.3984cqw;width:1.6406vw;width:1.6406cqw;height:1.6146vw;height:1.6146cqw;z-index:5" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+  <span class="t btn-label" style="left:9.7917vw;left:9.7917cqw;top:48.8477vw;top:48.8477cqw;font-size:1.0091vw;font-size:1.0091cqw;letter-spacing:0;z-index:5;pointer-events:none">FALAR COM O ESCRITÓRIO</span>
+  <a class="btn btn-ghost" href="#areas" aria-label="Conhecer a atuação"></a>
+  <span class="t btn-label g" style="left:28.4115vw;left:28.4115cqw;top:48.8672vw;top:48.8672cqw;font-size:0.931vw;font-size:0.931cqw;letter-spacing:0.054vw;letter-spacing:0.054cqw;z-index:5;pointer-events:none">CONHECER A ATUAÇÃO</span>
+
+  <!-- Diferenciais -->
+  <svg class="b-ico" style="left:5.306vw;left:5.306cqw;top:54.7852vw;top:54.7852cqw;width:1.9531vw;width:1.9531cqw;height:2.3763vw;height:2.3763cqw" viewBox="0 0 30 36.5" aria-hidden="true"><use href="#i-shield"/></svg>
+  <div class="benefit" style="left:8.3073vw;left:8.3073cqw;top:54.7656vw;top:54.7656cqw">Atendimento<br>Personalizado</div>
+  <span class="b-sep" style="left:15.625vw;left:15.625cqw;background:#4a453f"></span>
+  <svg class="b-ico" style="left:17.1549vw;left:17.1549cqw;top:54.9805vw;top:54.9805cqw;width:2.2135vw;width:2.2135cqw;height:1.7578vw;height:1.7578cqw" viewBox="0 0 34 27" aria-hidden="true"><use href="#i-people"/></svg>
+  <div class="benefit" style="left:20.2083vw;left:20.2083cqw;top:54.7656vw;top:54.7656cqw">Sigilo e<br>Confiança</div>
+  <span class="b-sep" style="left:25.8464vw;left:25.8464cqw;background:#3a3531"></span>
+  <svg class="b-ico" style="left:27.3763vw;left:27.3763cqw;top:54.9154vw;top:54.9154cqw;width:2.2135vw;width:2.2135cqw;height:1.9206vw;height:1.9206cqw" viewBox="0 0 34 29.5" aria-hidden="true"><use href="#i-bars"/></svg>
+  <div class="benefit" style="left:30.4818vw;left:30.4818cqw;top:54.7656vw;top:54.7656cqw">Estratégia<br>em Cada Etapa</div>
+  <span class="b-sep" style="left:38.151vw;left:38.151cqw;background:#433e3a"></span>
+  <svg class="b-ico" style="left:39.9479vw;left:39.9479cqw;top:54.7656vw;top:54.7656cqw;width:1.7578vw;width:1.7578cqw;height:2.3763vw;height:2.3763cqw" viewBox="0 0 27 36.5" aria-hidden="true"><use href="#i-pin"/></svg>
+  <div class="benefit" style="left:42.8646vw;left:42.8646cqw;top:54.7656vw;top:54.7656cqw">Atuação em<br>todo o Estado de MG</div>
+
+  <!-- Texto sobre a parte escura da fotografia -->
+  <blockquote class="quote"><span class="q1">“Mais que direito,</span><br><span class="q2">soluções para a sua vida.”</span></blockquote>
+  <span class="quote-line" aria-hidden="true"></span>
+  <div class="t quote-name">SUZANNE FIGUEIREDO</div>
+  <div class="t quote-oab">OAB/MG 131.880</div>
+
+  <!-- Rodapé visual (áreas de atuação) -->
+  <span class="foot-line" aria-hidden="true"></span>
+  <span class="foot-hit" aria-hidden="true"></span>
+  <nav aria-label="Áreas de atuação">
+    <a class="t area" style="left:4.5964vw;left:4.5964cqw;top:63.5807vw;top:63.5807cqw" href="#areas">FAMÍLIA</a>
+    <span class="f-sep" style="left:9.6094vw;left:9.6094cqw"></span>
+    <a class="t area" style="left:11.4323vw;left:11.4323cqw;top:63.5807vw;top:63.5807cqw" href="#areas">SUCESSÕES</a>
+    <span class="f-sep" style="left:17.6432vw;left:17.6432cqw"></span>
+    <a class="t area" style="left:19.4401vw;left:19.4401cqw;top:63.5807vw;top:63.5807cqw" href="#areas">CONSUMIDOR</a>
+    <span class="f-sep" style="left:26.6016vw;left:26.6016cqw"></span>
+    <a class="t area" style="left:28.3594vw;left:28.3594cqw;top:63.5807vw;top:63.5807cqw" href="#areas">BANCÁRIO</a>
+    <span class="f-sep" style="left:34.2448vw;left:34.2448cqw"></span>
+    <a class="t area" style="left:35.9766vw;left:35.9766cqw;top:63.5807vw;top:63.5807cqw" href="#areas">CÍVEL</a>
+    <span class="f-sep" style="left:40.013vw;left:40.013cqw"></span>
+    <a class="t area" style="left:41.7708vw;left:41.7708cqw;top:63.5807vw;top:63.5807cqw" href="#areas">TRABALHISTA</a>
+    <span class="f-sep" style="left:49.0234vw;left:49.0234cqw"></span>
+    <a class="t area" style="left:50.8203vw;left:50.8203cqw;top:63.5807vw;top:63.5807cqw" href="#areas">SAÚDE</a>
+    <span class="f-sep" style="left:55.1432vw;left:55.1432cqw"></span>
+    <a class="t area" style="left:56.9401vw;left:56.9401cqw;top:63.5807vw;top:63.5807cqw" href="#areas">PENAL</a>
+    <span class="f-sep" style="left:61.1979vw;left:61.1979cqw"></span>
+    <a class="t area" style="left:62.9948vw;left:62.9948cqw;top:63.5807vw;top:63.5807cqw" href="#areas">USUCAPIÃO</a>
+  </nav>
+  <span class="motto-line" aria-hidden="true"></span>
+  <div class="motto"><span>SEMPRE AO SEU LADO</span><br><span class="m2">NAS DECISÕES QUE IMPORTAM.</span></div>
+
+  <span class="anchor" id="contato" style="left:0;top:66.4062vw;top:66.4062cqw"></span>
+</div>
+</main>
+
+<section class="areas" id="areas" aria-labelledby="areas-t">
+  <div class="areas-in">
+    <div class="areas-eyebrow">Áreas de atuação</div>
+    <h2 id="areas-t">Em que posso <em>ajudar você</em></h2>
+    <p class="areas-lead">Atendimento jurídico personalizado, com análise cuidadosa de cada caso, comunicação clara e acompanhamento em todas as etapas. Atuação em todo o Estado de Minas Gerais.</p>
+    <ul class="areas-grid">
+      <li class="area-card"><span class="area-n">01</span><h3>Família</h3><p>Divórcio, guarda, pensão alimentícia, união estável e convivência: orientação cuidadosa em momentos delicados.</p><a class="area-link" href="#contato" data-area="Família">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">02</span><h3>Sucessões</h3><p>Inventário, partilha de bens, testamento e planejamento sucessório, com clareza em cada etapa.</p><a class="area-link" href="#contato" data-area="Sucessões">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">03</span><h3>Consumidor</h3><p>Cobranças indevidas, negativação, problemas com produtos e serviços e contratos abusivos.</p><a class="area-link" href="#contato" data-area="Consumidor">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">04</span><h3>Bancário</h3><p>Análise de contratos, empréstimos, financiamentos, juros e cobranças de instituições financeiras.</p><a class="area-link" href="#contato" data-area="Bancário">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">05</span><h3>Cível</h3><p>Contratos, responsabilidade civil, indenizações e cobranças, com acompanhamento próximo do processo.</p><a class="area-link" href="#contato" data-area="Cível">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">06</span><h3>Trabalhista</h3><p>Verbas rescisórias, reconhecimento de vínculo, horas extras e demais direitos do trabalhador.</p><a class="area-link" href="#contato" data-area="Trabalhista">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">07</span><h3>Saúde</h3><p>Negativas de cobertura de planos de saúde, tratamentos, medicamentos e atendimento domiciliar (home care).</p><a class="area-link" href="#contato" data-area="Saúde">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">08</span><h3>Penal</h3><p>Acompanhamento e defesa em investigações e processos criminais, com sigilo e responsabilidade.</p><a class="area-link" href="#contato" data-area="Penal">Falar sobre este assunto</a></li>
+      <li class="area-card"><span class="area-n">09</span><h3>Usucapião</h3><p>Regularização de imóveis e reconhecimento da propriedade por posse prolongada.</p><a class="area-link" href="#contato" data-area="Usucapião">Falar sobre este assunto</a></li>
+    </ul>
+    <div class="areas-cta">
+      <p>Não encontrou o seu caso? Conte-me sua situação.</p>
+      <a class="areas-btn" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Falar com o escritório</a>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre" aria-labelledby="sobre-t">
+  <div class="sobre-grid">
+    <div class="sobre-foto"><img src="/hero-photo.jpg" alt="Dra. Suzanne Figueiredo, advogada" width="1692" height="1574" loading="lazy" decoding="async"></div>
+    <div>
+      <div class="areas-eyebrow">Sobre</div>
+      <h2 id="sobre-t">Suzanne Figueiredo, <em>advogada</em></h2>
+      <p class="tx">Sou advogada inscrita na OAB/MG sob o nº 131.880 e atuo com um atendimento próximo, sigiloso e orientado por estratégia. Cada caso é analisado com cuidado, e cada etapa é explicada com clareza, para que você tome suas decisões com segurança.</p>
+      <p class="tx">Meu compromisso é acompanhar você do primeiro contato até a solução, com transparência sobre o caminho jurídico possível e sem promessas de resultado. Mais que direito, soluções para a sua vida.</p>
+      <ul class="pilares">
+        <li><svg viewBox="0 0 30 36.5" aria-hidden="true"><use href="#i-shield"/></svg>Atendimento personalizado</li>
+        <li><svg viewBox="0 0 34 27" aria-hidden="true"><use href="#i-people"/></svg>Sigilo e confiança</li>
+        <li><svg viewBox="0 0 34 29.5" aria-hidden="true"><use href="#i-bars"/></svg>Estratégia em cada etapa</li>
+        <li><svg viewBox="0 0 27 36.5" aria-hidden="true"><use href="#i-pin"/></svg>Atuação em todo o Estado de MG</li>
+      </ul>
+    </div>
+  </div>
+  <ol class="passos" aria-label="Como funciona o atendimento">
+    <li><b>Primeiro contato</b><span>Você me chama pelo WhatsApp e conta, com suas palavras, o que está acontecendo.</span></li>
+    <li><b>Análise do caso</b><span>Avalio a sua situação com cuidado e explico, de forma clara, quais são os caminhos possíveis.</span></li>
+    <li><b>Estratégia e acompanhamento</b><span>Definimos juntos o melhor caminho e você acompanha cada etapa de perto.</span></li>
+  </ol>
+</section>
+
+<section class="depo" id="depoimentos" aria-labelledby="depo-t">
+  <div class="depo-in">
+    <div class="areas-eyebrow">Depoimentos</div>
+    <h2 id="depo-t">Confiança que se <em>constrói</em></h2>
+    <p>Os relatos de quem já foi atendido serão publicados aqui, sempre com autorização e respeitando o sigilo profissional e as normas da OAB.</p>
+    <p>Enquanto isso, conte-me a sua situação: será um prazer atender você.</p>
+    <div class="areas-cta" style="margin-top:26px">
+      <a class="areas-btn" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Falar com o escritório</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot" id="rodape">
+    <div><b>SUZANNE FIGUEIREDO</b> · Advocacia e Soluções Jurídicas<br>OAB/MG 131.880 · (31) 99298-4141 · eulampiosuzanne@gmail.com</div>
+</footer>
+
+<!-- Ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2bc82"/><stop offset=".5" stop-color="#c99b5c"/><stop offset="1" stop-color="#e0b877"/></linearGradient>
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path d="M12 2.3a9.5 9.5 0 0 1 8.1 14.5 9.5 9.5 0 0 1-11.7 3.9L3 22.1l1.5-5.1A9.5 9.5 0 0 1 12 2.3Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/>
+      <path fill="#fff" d="M9.1 7.2c-.3 0-.6.1-.8.4-.5.7-.7 1.4-.4 2.3.6 1.5 1.6 2.9 3 3.9.9.7 1.9 1.1 2.9 1.1.7 0 1.3-.3 1.7-.9.1-.2 0-.4-.1-.5l-1.5-.9c-.2-.1-.4-.1-.6.1l-.6.7c-.1.1-.3.2-.5.1a6 6 0 0 1-2.8-2.6c-.1-.2-.1-.3 0-.5l.5-.6c.1-.1.1-.3 0-.5l-.8-1.6c-.1-.2-.2-.3-.4-.3Z"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 30 36.5"><g fill="none" stroke="url(#gold)" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"><path d="M15 1.2 28.6 5.6V18c0 8.2-6.4 14.4-13.6 17.4C7.8 32.4 1.4 26.2 1.4 18V5.6Z"/><path d="M9 18.4 13.4 22.6 21.6 12"/></g></symbol>
+    <symbol id="i-people" viewBox="0 0 34 27"><g fill="none" stroke="url(#gold)" stroke-width="1.25" stroke-linecap="round"><circle cx="17.2" cy="5.6" r="4.7"/><path d="M8.6 26V22c0-4.3 3.9-7 8.6-7s8.6 2.7 8.6 7v4"/><circle cx="5.6" cy="9.4" r="3.2"/><path d="M1.2 26v-3.8c0-2.4 1.5-4.2 3.9-4.7"/><circle cx="28.6" cy="9.4" r="3.2"/><path d="M32.8 26v-3.8c0-2.4-1.5-4.2-3.9-4.7"/></g></symbol>
+    <symbol id="i-bars" viewBox="0 0 34 29.5"><g fill="none" stroke="url(#gold)" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"><path d="M.8 28.6h32.4"/><path d="M3.4 28.6V18.2h5.4v10.4"/><path d="M12 28.6V9.6h5.6v19"/><path d="M23.6 28.6V.8h2.7v27.8"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 27 36.5"><g fill="none" stroke="url(#gold)" stroke-width="1.25" stroke-linejoin="round"><path d="M13.5 35.4S1.2 22.6 1.2 13.7a12.3 12.3 0 0 1 24.6 0c0 8.9-12.3 21.7-12.3 21.7Z"/><circle cx="13.5" cy="13.7" r="4.9"/></g></symbol>
+  </defs>
+</svg>
+
+<script>
+/* ===========================================================
+   >>> CONFIGURE AQUI O WHATSAPP DO ESCRITÓRIO <<<
+   Somente dígitos, com país + DDD. Exemplo: "5531999999999"
+   Enquanto estiver vazio, os botões abrem o WhatsApp sem contato
+   definido (o visitante escolhe para quem enviar).
+   =========================================================== */
+const WHATSAPP_NUMBER = "5531992984141";
+const WHATSAPP_MESSAGE = "Olá! Vim pelo site e gostaria de falar com o escritório.";
+
+(function () {
+  var digits = String(WHATSAPP_NUMBER).replace(/\D/g, "");
+  var url = "https://wa.me/" + digits + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
+  document.querySelectorAll("[data-whatsapp]").forEach(function (a) {
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
+  document.querySelectorAll("[data-area]").forEach(function (a) {
+    var msg = "Olá! Vim pelo site e gostaria de falar com o escritório sobre: " + a.getAttribute("data-area") + ".";
+    a.href = "https://wa.me/" + digits + "?text=" + encodeURIComponent(msg);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
+})();
+</script>
+</body>
+</html>

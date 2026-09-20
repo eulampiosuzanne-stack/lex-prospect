@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0406">
+<meta name="robots" content="index,follow">
+<title>Suzanne Figueiredo | Advocacia e Soluções Jurídicas</title>
+<meta name="description" content="Informação jurídica clara e atendimento individualizado. Suzanne Figueiredo, OAB/MG 131.880.">
+<style>
+:root{--wine:#7a1020;--dark:#0a0406;--gold:#b48a4e;--gold2:#e4c484;--red:#7d0c16;--txt:#f3ece2;--mut:#cfc5ba}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--dark);color:var(--txt);font-family:Georgia,'Times New Roman',serif}
+a{color:inherit}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;background:radial-gradient(circle at 15% 20%,#5e0c18 0,#160709 36%,#080506 72%)}
+.copy{padding:8vw 7vw;display:flex;flex-direction:column;justify-content:center}
+.mark{font-size:48px;color:var(--gold2);font-weight:700;letter-spacing:.04em}
+.brand{letter-spacing:.18em;font-size:12px;color:var(--gold2);margin:8px 0 48px;text-transform:uppercase}
+.eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:.16em;font:700 12px Arial,sans-serif}
+h1{font-size:clamp(38px,5.4vw,70px);line-height:1.02;margin:14px 0 22px;max-width:780px;font-weight:700}
+.lead{font:18px/1.7 Arial,sans-serif;color:var(--mut);max-width:640px;margin:0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{padding:16px 24px;border-radius:8px;text-decoration:none;font:700 14px Arial,sans-serif;display:inline-block}
+.primary{background:linear-gradient(135deg,#7d0c16,#b3161f);color:#fff;border:1px solid #a3141d}
+.primary:hover{filter:brightness(1.12)}
+.secondary{border:1px solid var(--gold);color:var(--gold2)}
+.photo{min-height:100vh;background:url('/hero-photo.jpg') 62% 30%/cover no-repeat;position:relative}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0a0406 0,transparent 32%)}
+.info{padding:72px 7vw;background:#0f0a09;border-top:1px solid #49331d}
+.info h2{font-size:clamp(26px,3.2vw,36px);margin:0 0 18px;font-weight:700}
+.info p{font:17px/1.75 Arial,sans-serif;color:var(--mut);max-width:880px;margin:0 0 14px}
+.points{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:1000px}
+.points li{border:1px solid #3a2a1a;border-radius:10px;padding:20px 20px 18px;background:#130c0b;font:15px/1.6 Arial,sans-serif;color:var(--mut)}
+.points b{display:block;color:var(--gold2);font:700 12px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.cta2{padding:56px 7vw;background:linear-gradient(135deg,#2a060c,#0a0406);border-top:1px solid #49331d;text-align:center}
+.cta2 h2{font-size:clamp(24px,3vw,32px);margin:0 0 10px}
+.cta2 p{font:16px/1.6 Arial,sans-serif;color:var(--mut);margin:0 auto 22px;max-width:640px}
+.foot{padding:28px 7vw 34px;color:#9a8e82;font:12px/1.7 Arial,sans-serif;background:#060304;border-top:1px solid #2a1c12}
+.foot p{margin:0 0 6px;max-width:900px}
+.foot a{color:var(--gold2)}
+@media(max-width:800px){
+.hero{display:block}
+.copy{padding:64px 24px 40px;min-height:58vh}
+.photo{min-height:58vh;background-position:60% 22%}
+.photo:after{background:linear-gradient(180deg,#0a0406 0,transparent 25%)}
+.brand{margin-bottom:32px}
+.info{padding:52px 24px}
+.cta2{padding:44px 24px}
+.foot{padding:24px}
+}
+</style>
+</head>
+<body>
+<main class="hero">
+  <section class="copy">
+    <div class="mark">SF</div>
+    <div class="brand">Suzanne Figueiredo · Advocacia e Soluções Jurídicas</div>
+    <span class="eyebrow" id="eyebrow">Informação jurídica</span>
+    <h1 id="titulo">Orientação Jurídica</h1>
+    <p class="lead" id="lead"></p>
+    <div class="actions">
+      <a class="btn primary" id="cta1" href="#" rel="noopener">Falar com o escritório</a>
+      <a class="btn secondary" href="#entenda">Entenda o atendimento</a>
+    </div>
+  </section>
+  <div class="photo" role="img" aria-label="Dra. Suzanne Figueiredo em seu escritório"></div>
+</main>
+
+<section class="info" id="entenda">
+  <h2 id="h2">Atendimento jurídico com estratégia e clareza.</h2>
+  <p id="texto"></p>
+  <p>Cada caso é analisado individualmente, a partir da situação e dos documentos disponíveis. O conteúdo desta página é informativo e não constitui promessa de resultado.</p>
+  <ul class="points" id="points"></ul>
+</section>
+
+<section class="cta2">
+  <h2>Ficou com alguma dúvida?</h2>
+  <p>Você pode entrar em contato pelo WhatsApp do escritório. A conversa começa pela compreensão da sua situação, sem compromisso.</p>
+  <a class="btn primary" id="cta2" href="#" rel="noopener">Conversar pelo WhatsApp</a>
+</section>
+
+<footer class="foot">
+  <p><b>Suzanne Eulampio da Silva Figueiredo</b> · OAB/MG 131.880 · Minas Gerais · (31) 99298-4141 · eulampiosuzanne@gmail.com</p>
+  <p>Conteúdo de caráter exclusivamente informativo, elaborado conforme o Código de Ética e Disciplina da OAB e o Provimento 205/2021 do Conselho Federal. Não constitui promessa de resultado, captação de clientela nem substitui a análise individual do caso.</p>
+  <p>Privacidade (LGPD): ao entrar em contato, os dados que você informar serão usados somente para o atendimento e não serão compartilhados com terceiros. Você pode solicitar a exclusão a qualquer momento pelo mesmo canal.</p>
+  <p><a href="/landing">Conheça o escritório</a></p>
+</footer>
+
+<script>
+(function(){
+  var WHATSAPP_NUMBER = "5531992984141";
+  var T = {
+    "orientacao":{n:"Orientação Jurídica",e:"Conteúdo informativo",l:"Informação jurídica clara para ajudar a compreender o tema e identificar quando uma avaliação profissional é necessária.",t:"Muitas dúvidas jurídicas nascem da falta de informação simples. Aqui você encontra uma explicação objetiva sobre como o tema funciona e quais documentos costumam ser importantes.",p:[["Compreender","Explicamos o assunto em linguagem acessível, sem juridiquês."],["Organizar","Indicamos quais documentos e informações ajudam na análise."],["Decidir","Você decide o momento de buscar uma avaliação individual."]]},
+    "divorcio":{n:"Divórcio e Dissolução de União",e:"Direito de Família",l:"Informação e atendimento cuidadoso para quem precisa organizar o fim de um casamento ou união estável.",t:"O divórcio pode ser feito de forma consensual ou litigiosa, em cartório ou na Justiça, conforme o caso. Questões como partilha de bens, guarda e pensão costumam caminhar juntas e merecem análise individual.",p:[["Caminhos possíveis","Divórcio consensual em cartório, consensual judicial ou litigioso."],["Pontos de atenção","Partilha, guarda, convivência, alimentos e nome."],["Documentos úteis","Certidão de casamento ou de união, documentos dos bens e dos filhos."]]},
+    "guarda":{n:"Guarda e Convivência dos Filhos",e:"Direito de Família",l:"Orientação sobre guarda, convivência e responsabilidade familiar, sempre com foco no melhor interesse da criança.",t:"A legislação brasileira tem a guarda compartilhada como regra, e a definição de convivência depende da rotina e das necessidades de cada criança. Um plano de convivência claro e por escrito costuma prevenir conflitos.",p:[["Guarda compartilhada","Responsabilidade conjunta nas decisões sobre a vida dos filhos."],["Plano de convivência","Rotina, feriados, férias e datas especiais combinados por escrito."],["Melhor interesse","O critério central é o bem-estar da criança ou do adolescente."]]},
+    "pensao":{n:"Pensão Alimentícia",e:"Direito de Família",l:"Informação sobre fixação, revisão e cumprimento da pensão alimentícia, com equilíbrio entre necessidade e possibilidade.",t:"O valor dos alimentos considera a necessidade de quem recebe e a possibilidade de quem paga. Ele pode ser revisto quando a situação de uma das partes muda de forma relevante.",p:[["Fixação","Análise das despesas do filho e da capacidade de quem contribui."],["Revisão","Possível quando há mudança real na situação financeira."],["Cumprimento","Existem meios legais para cobrar alimentos em atraso."]]},
+    "inventario":{n:"Inventário e Sucessões",e:"Família e Sucessões",l:"Orientação sobre inventário, partilha e organização do patrimônio deixado por quem faleceu.",t:"O inventário pode ser feito em cartório, quando há consenso e todos são capazes, ou na Justiça. Cada caminho tem prazos, documentos e custos próprios que dependem da situação da família.",p:[["Extrajudicial","Em cartório, quando há acordo entre os herdeiros e não há testamento."],["Judicial","Necessário em situações como divergência ou herdeiro incapaz."],["Prazos","O inventário deve ser aberto em até 60 dias do falecimento."]]},
+    "planejamento-sucessorio":{n:"Planejamento Sucessório",e:"Família e Sucessões",l:"Organização patrimonial e sucessória com análise individualizada da estrutura familiar.",t:"Planejar a sucessão em vida ajuda a evitar conflitos entre herdeiros e a preservar o patrimônio. As ferramentas adequadas variam conforme a composição da família e dos bens.",p:[["Testamento","Permite dispor de parte do patrimônio respeitando a legítima."],["Doação com reserva","Organiza a transferência de bens ainda em vida."],["Análise familiar","Cada estrutura familiar pede uma solução diferente."]]},
+    "rede-de-apoio":{n:"Rede de Apoio",e:"Família e Sucessões",l:"Uma rede técnica para acolher situações familiares com responsabilidade e diálogo entre profissionais.",t:"Situações familiares delicadas costumam envolver mais de uma área, como psicologia, assistência social e o Direito. Trabalhar em rede permite um acompanhamento mais cuidadoso.",p:[["Diálogo","Comunicação respeitosa entre profissionais de áreas complementares."],["Sigilo","Cada profissional atua dentro de suas competências e do dever de sigilo."],["Acolhimento","O foco é o cuidado com as pessoas envolvidas."]]},
+    "protecao-infantil":{n:"Proteção Infantil",e:"Direito de Família",l:"Conteúdo e orientação jurídica voltados à proteção de crianças e à responsabilidade familiar.",t:"Crianças e adolescentes têm proteção prioritária na lei. Entender direitos e deveres da família ajuda a agir com segurança quando surgem situações de risco ou de conflito.",p:[["Prioridade absoluta","Princípio previsto na Constituição e no ECA."],["Responsabilidade","Deveres de sustento, guarda, educação e convivência."],["Rede de proteção","Conselho Tutelar, escola, saúde e sistema de Justiça."]]},
+    "parcerias-advogados":{n:"Parcerias Jurídicas",e:"Relacionamento profissional",l:"Atuação complementar entre profissionais, com comunicação institucional e respeito às competências de cada área.",t:"A advocacia se fortalece com a cooperação entre colegas. Esta página apresenta o escritório a outros profissionais, de forma institucional e dentro das normas da OAB.",p:[["Cooperação","Atuação conjunta e correspondência jurídica em Minas Gerais."],["Ética","Sem captação de clientela e com respeito às competências de cada área."],["Contato","Conversa profissional direta pelo WhatsApp do escritório."]]},
+    "cartorios":{n:"Cartórios e Serventias",e:"Família e Sucessões",l:"Canal institucional para demandas extrajudiciais e temas relacionados a família, patrimônio e sucessões.",t:"Divórcios, inventários e escrituras feitos em cartório dependem de documentação correta e de orientação jurídica adequada. Este canal apresenta o escritório às serventias extrajudiciais.",p:[["Extrajudicial","Divórcio, inventário e partilha por escritura pública."],["Documentação","Conferência dos documentos exigidos em cada ato."],["Contato","Canal institucional direto com o escritório."]]},
+    "empresas":{n:"Apresentação Empresarial",e:"Soluções Jurídicas",l:"Assessoria jurídica estratégica para empresas que valorizam prevenção, organização e segurança nas decisões.",t:"Empresas que organizam contratos, cobranças e relações comerciais antes de um conflito tendem a decidir com mais segurança. O escritório apresenta sua atuação de forma objetiva.",p:[["Prevenção","Revisão e organização de contratos e rotinas."],["Segurança","Apoio jurídico nas decisões empresariais."],["Relacionamento","Atendimento direto, sem promessas de resultado."]]},
+    "prevencao":{n:"Prevenção Jurídica Empresarial",e:"Empresarial",l:"Organização jurídica para contratos, cobranças, relações comerciais e decisões empresariais.",t:"A prevenção costuma ser mais simples do que a solução de um conflito. Contratos claros e documentos em ordem reduzem riscos ao longo da vida da empresa.",p:[["Contratos","Revisão de cláusulas e condições."],["Cobranças","Organização de documentos e alternativas de recebimento."],["Rotina","Boas práticas jurídicas no dia a dia."]]},
+    "dividas-empresariais":{n:"Dívidas Bancárias Empresariais",e:"Empresarial e Bancário",l:"Diagnóstico jurídico de contratos e endividamento empresarial para organizar informações e alternativas.",t:"Antes de decidir qualquer coisa, é importante entender o que foi contratado, quais encargos incidem e quais alternativas existem. A análise parte dos documentos da empresa.",p:[["Contratos","Levantamento de operações, garantias e encargos."],["Panorama","Visão organizada do endividamento."],["Alternativas","Caminhos possíveis para cada situação, sem promessas."]]},
+    "bancario":{n:"Diagnóstico Bancário",e:"Direito Bancário",l:"Uma conversa inicial para compreender contratos, cobranças e documentos antes de definir os próximos passos.",t:"Contratos bancários têm cláusulas técnicas que nem sempre ficam claras. A conversa inicial serve para entender o que foi contratado e o que a documentação mostra.",p:[["Contratos","Leitura das condições e dos encargos."],["Cobranças","Conferência de valores e datas."],["Próximos passos","Definidos só depois da análise dos documentos."]]},
+    "consumidor":{n:"Diagnóstico do Consumidor",e:"Consumidor",l:"Triagem de cobranças, negativação, fraudes e relações de consumo a partir dos documentos disponíveis.",t:"O Código de Defesa do Consumidor protege quem contrata produtos e serviços. Guardar comprovantes, protocolos e conversas é o primeiro passo para qualquer avaliação.",p:[["Cobranças","Verificação de valores contestados."],["Negativação","Análise de inscrições em cadastros de inadimplentes."],["Provas","Comprovantes, protocolos e prints ajudam na análise."]]},
+    "financiamento-veiculo":{n:"Financiamento de Veículo",e:"Bancário",l:"Análise inicial do contrato, parcelas, notificações e circunstâncias do financiamento.",t:"O contrato de financiamento traz juros, encargos e condições de vencimento. Ao receber uma notificação, o primeiro passo é reunir o contrato e o histórico de pagamentos.",p:[["Contrato","Taxas, prazo, garantias e encargos."],["Parcelas","Histórico de pagamentos e atrasos."],["Notificações","Prazos e providências indicados em cada comunicação."]]}
+  };
+  var ALIAS={"advogados":"parcerias-advogados","apresentacao":"empresas","prevencao-juridica":"prevencao","dividas-bancarias":"dividas-empresariais","diagnostico-bancario":"bancario","diagnostico":"consumidor","orientacao-juridica":"orientacao","familia":"divorcio"};
+  var q=(new URLSearchParams(location.search).get("t")||"orientacao").toLowerCase();
+  q=ALIAS[q]||q;
+  var d=T[q]||T["orientacao"];
+  var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v};
+  set("titulo",d.n);set("eyebrow",d.e);set("lead",d.l);set("texto",d.t);
+  document.title=d.n+" | Suzanne Figueiredo Advocacia";
+  var ul=document.getElementById("points");
+  d.p.forEach(function(x){var li=document.createElement("li");var b=document.createElement("b");b.textContent=x[0];li.appendChild(b);li.appendChild(document.createTextNode(x[1]));ul.appendChild(li)});
+  var msg="Olá! Vim pelo site e gostaria de falar com o escritório sobre: "+d.n+".";
+  var url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg);
+  ["cta1","cta2"].forEach(function(id){var a=document.getElementById(id);a.href=url;a.target="_blank"});
+})();
+</script>
+</body>
+</html>
