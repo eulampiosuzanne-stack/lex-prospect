@@ -26,7 +26,27 @@
     @media(max-width:720px){.tabsbar{padding:10px 16px}.band{padding:16px}.band h2{font-size:22px}}
       .sidebar .brand,.sidebar .sidebar-foot{flex:0 0 auto}.nav{flex:1 1 auto;min-height:0;overflow-y:scroll;overflow-x:hidden;overscroll-behavior:contain;padding-right:6px;margin-right:-6px;scrollbar-width:thin;scrollbar-color:#ef2b36 #1a1a1f}.nav::-webkit-scrollbar{width:8px}.nav::-webkit-scrollbar-track{background:#1a1a1f;border-radius:8px}.nav::-webkit-scrollbar-thumb{background:linear-gradient(#ef2b36,#a70e18);border-radius:8px}.nav::-webkit-scrollbar-thumb:hover{background:#ef2b36}
     #rede,#apoio,[id^="r-"]{scroll-margin-top:140px}
-  </style>
+  
+/* Lex Prospect organized workspace */
+:root{--sidebar-w:286px}
+.app{grid-template-columns:var(--sidebar-w) 1fr}
+.sidebar{width:var(--sidebar-w);padding:18px 14px;overflow-y:auto}
+.brand{padding:4px 10px 20px}.nav-label{margin-top:8px;padding-top:15px;border-top:1px solid #1e1e23}
+.nav-label:first-of-type{border-top:0}.nav button{min-height:44px}
+.main{grid-column:2}.content{max-width:none;padding:30px 34px 64px}
+.tabsbar{display:none!important}
+.section-title,.band,.workspace,.stats,.bottom,.support-card,.mode-grid{scroll-margin-top:92px}
+.support-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+#lexPostsSection{margin-top:40px}
+#approvalCenter{margin-top:18px}
+#socialScheduleList article,#approvalList article,#postList article{background:#121217;border:1px solid #282830!important;border-radius:13px;padding:15px!important;margin:10px 0}
+#scheduleFilters{background:#0e0e12;border:1px solid #25252c;border-radius:12px;padding:8px!important}
+.schedule-filter{width:auto!important}
+#processual{margin-top:42px}
+.page-hidden{display:none!important}
+.page-active{display:block}
+@media(max-width:720px){.main{grid-column:auto}.content{padding:20px 15px 44px}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -59,8 +79,14 @@
       <div class="nav-label">5 · Atendimento e IA</div>
       <button data-go="lexAgentSection"><span class="ico">✦</span>Agente Lex</button>
       <button class="sub" data-go="lexChatSection"><span class="ico">↳</span>Chat de atendimento</button>
-      <button class="sub" data-go="lexPostsSection"><span class="ico">↳</span>Social Media</button>
-      <div class="nav-label">6 · Inteligência processual</div>
+      <div class="nav-label">6 · Social Media</div>
+      <button data-go="approvalCenter"><span class="ico">✓</span>Central de aprovação</button>
+      <button data-go="lexPostsSection"><span class="ico">◫</span>Conteúdos</button>
+      <button data-go="socialScheduleList"><span class="ico">▦</span>Programação</button>
+      <button data-go="socialAccounts"><span class="ico">◎</span>Conexões Meta</button>
+      <div class="nav-label">7 · Motores e APIs</div>
+      <button data-go="engineCenter"><span class="ico">⚙</span>Status dos motores</button>
+      <div class="nav-label">8 · Inteligência processual</div>
       <button data-go="processual"><span class="ico">◆</span>Inteligência processual</button>
       <button class="sub" data-go="monitoramento"><span class="ico">↳</span>Busca preventiva</button>
       <button class="sub" data-go="monitoramento"><span class="ico">↳</span>Busca estratégica</button>
@@ -198,6 +224,8 @@
         <button class="primary" id="saveAgentConfig">Salvar configuração</button>
         <small id="agentConfigStatus" style="display:block;margin-top:9px;color:var(--muted)">Carregando configuração…</small>
       </section>
+      <div class="section-title" id="engineCenter"><div><span class="eyebrow">Infraestrutura</span><h2>Motores e APIs</h2><p>Estado real dos serviços conectados à Lex Prospect.</p></div><button class="secondary" id="refreshEngines">↻ Verificar motores</button></div>
+      <section class="support-card" style="display:block;margin-bottom:14px"><div id="engineStatus"><p style="color:var(--muted)">Verificando serviços…</p></div></section>
       <div class="section-title" id="approvalCenter"><div><span class="eyebrow">Aprovação</span><h2>Central de Aprovação</h2><p>Campanhas e publicações aguardando sua decisão, reunidas em um único lugar.</p></div><button class="secondary" id="refreshApprovals">↻ Atualizar aprovações</button></div>
       <section class="support-card" style="display:block;margin-bottom:14px">
         <div class="card-head"><div><h3>Pendências para aprovação</h3><small>Campanhas e Social Media</small></div></div>
@@ -379,6 +407,16 @@ document.getElementById('saveAgentConfig').onclick=async()=>{
   const {error}=await lexdb.from('agentes').update({nome:document.getElementById('agentConfigName').value.trim()||'Helena',funcao:document.getElementById('agentConfigRole').value.trim(),prompt:document.getElementById('agentConfigPrompt').value,ativo:document.getElementById('agentConfigActive').checked,configuracao,updated_at:new Date().toISOString()}).eq('id',currentAgentId);
   st.textContent=error?'Erro: '+error.message:'✓ Configuração salva.';
 };
+async function loadEngines(){
+ const el=document.getElementById('engineStatus'),session=await lexSession();
+ const engines=[
+  ['Extração de leads','prospect-extractor'],['Saúde da prospecção','prospect-health'],['Agente Lex','lex-agent'],
+  ['Atendimento IA','prospect-chat-agent'],['Social Media IA','generate-post-script'],['Publicação Instagram','social-publish-instagram'],
+  ['Meta / Instagram OAuth','instagram-oauth-start'],['MCP Lex Prospect','lex-prospect-mcp']
+ ];
+ el.innerHTML=engines.map(([n,s])=>'<article style="display:flex;justify-content:space-between;gap:14px;align-items:center;border-top:1px solid var(--line);padding:13px 2px"><div><b>'+lexEsc(n)+'</b><small style="display:block;color:var(--muted);margin-top:3px">'+lexEsc(s)+'</small></div><span class="badge">'+(session?'Disponível':'Requer acesso')+'</span></article>').join('');
+}
+document.getElementById('refreshEngines').onclick=loadEngines;
 async function loadApprovals(){
   const box=document.getElementById('approvalList'),st=document.getElementById('approvalStatus'),session=await lexSession();
   if(!session){st.innerHTML='Para proteger suas campanhas, faça o acesso uma única vez no botão <b>Entrar</b> no rodapé. Depois disso esta lista abre automaticamente.';box.innerHTML='';return}
@@ -395,7 +433,7 @@ async function loadApprovals(){
 }
 async function approveCampaignById(id){const {error}=await lexdb.from('campanhas').update({status:'aprovada'}).eq('id',id);if(error)return alert(error.message);await loadApprovals()}
 document.getElementById('refreshApprovals').onclick=loadApprovals;
-loadApprovals();loadLexPosts();loadSocialAccounts();loadProspectInbox();loadSocialSchedule();loadAgentConfig();
+loadEngines();loadApprovals();loadLexPosts();loadSocialAccounts();loadProspectInbox();loadSocialSchedule();loadAgentConfig();
 refreshLexAuth();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}</script>
