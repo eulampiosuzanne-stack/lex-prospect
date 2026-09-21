@@ -182,6 +182,22 @@
           <div id="inboxThread" style="min-height:180px;border:1px solid var(--line);border-radius:12px;padding:14px"><p style="color:var(--muted)">Selecione uma conversa para visualizar as mensagens.</p></div>
         </div>
       </section>
+      <div class="section-title" id="agentConfigSection"><div><span class="eyebrow">Agente de IA</span><h2>Configuração do Atendimento</h2><p>Visualize e edite as regras aplicadas pela agente Helena.</p></div><button class="secondary" id="refreshAgentConfig">↻ Recarregar</button></div>
+      <section class="support-card" style="display:block;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+          <div><label>Nome da agente</label><input id="agentConfigName" value="Helena"></div>
+          <div><label>Função</label><input id="agentConfigRole" placeholder="Função da agente"></div>
+          <div><label>Horário de atendimento</label><input id="agentConfigHours" placeholder="09h às 18h, segunda a sexta"></div>
+          <div><label>Consulta para não cliente (R$)</label><input id="agentConfigConsult" type="number" min="0" step="1"></div>
+          <div><label>Pausa quando Suzanne assumir (minutos)</label><input id="agentConfigPause" type="number" min="0" step="1"></div>
+          <div><label>Número de follow-ups</label><input id="agentConfigFollowups" type="number" min="0" step="1"></div>
+        </div>
+        <div class="field"><label>Mensagem inicial</label><input id="agentConfigGreeting"></div>
+        <div class="field"><label>Regras e instruções da agente</label><textarea id="agentConfigPrompt" rows="8" style="width:100%;background:#0d0d10;color:#fff;border:1px solid var(--line);border-radius:10px;padding:12px"></textarea></div>
+        <label style="display:flex;align-items:center;gap:8px;margin:10px 0"><input id="agentConfigActive" type="checkbox" style="width:auto"> Agente ativa</label>
+        <button class="primary" id="saveAgentConfig">Salvar configuração</button>
+        <small id="agentConfigStatus" style="display:block;margin-top:9px;color:var(--muted)">Carregando configuração…</small>
+      </section>
       <div class="section-title" id="lexPostsSection"><div><span class="eyebrow">Social Media</span><h2>Social Media IA</h2><p>Conecte Instagram e Facebook, analise a identidade visual, crie o calendário e prepare Feed, Reels e Stories.</p></div><button class="primary" id="gerarPost">＋ Gerar conteúdo</button></div>
       <section class="support-card" style="display:block;margin-bottom:14px"><div class="card-head"><div><h3>Planejamento e identidade</h3><small>Paleta, calendário editorial e distribuição multiformato</small></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding-top:12px"><button class="secondary" id="analisarMarca">◉ Analisar paleta</button><button class="secondary" id="abrirCalendario">▦ Calendário</button><button class="secondary" id="criarPacote">✦ Criar Feed + Reel + Stories</button><button class="secondary" id="sincronizarMeta">↻ Instagram + Facebook</button></div><div id="socialMediaStatus" style="margin-top:12px;color:var(--muted);font-size:14.5px">Aguardando conexão das contas Meta.</div></section><section class="support-card" style="display:block;margin-bottom:14px"><div class="card-head"><div><h3>Redes sociais conectadas</h3><small>Contas autorizadas para operação do Social Media</small></div><button class="secondary" id="refreshSocial">Atualizar conexões</button></div><div id="socialAccounts"><p>Verificando contas…</p></div></section>
       <section class="support-card" style="display:block;margin-bottom:14px">
@@ -327,7 +343,37 @@ async function approveScheduledPost(id){
 document.querySelectorAll('.schedule-filter').forEach(b=>b.onclick=()=>{scheduleFilter=b.dataset.scheduleFilter;document.querySelectorAll('.schedule-filter').forEach(x=>x.classList.toggle('on',x===b));renderSocialSchedule()});
 document.getElementById('refreshSchedule').onclick=loadSocialSchedule;
 document.getElementById('abrirCalendario').onclick=()=>{document.getElementById('socialScheduleList').scrollIntoView({behavior:'smooth'});loadSocialSchedule()};
-loadLexPosts();loadSocialAccounts();loadProspectInbox();loadSocialSchedule();
+let currentAgentId=null;
+async function loadAgentConfig(){
+  const st=document.getElementById('agentConfigStatus'),session=await lexSession();
+  if(!session){st.textContent='Entre na Lex Prospect para visualizar a configuração da agente.';return}
+  st.textContent='Carregando configuração…';
+  const {data,error}=await lexdb.from('agentes').select('*').eq('nome','Helena').maybeSingle();
+  if(error){st.textContent='Erro: '+error.message;return}
+  if(!data){st.textContent='Configuração da Helena não encontrada.';return}
+  currentAgentId=data.id;const c=data.configuracao||{};
+  document.getElementById('agentConfigName').value=data.nome||'Helena';
+  document.getElementById('agentConfigRole').value=data.funcao||'';
+  document.getElementById('agentConfigHours').value=c.horario||'';
+  document.getElementById('agentConfigConsult').value=c.consulta_nao_cliente??200;
+  document.getElementById('agentConfigPause').value=c.pausa_humana_minutos??20;
+  document.getElementById('agentConfigFollowups').value=c.followups??3;
+  document.getElementById('agentConfigGreeting').value=c.mensagem_inicial||'Como posso ajudar hoje?';
+  document.getElementById('agentConfigPrompt').value=data.prompt||'';
+  document.getElementById('agentConfigActive').checked=!!data.ativo;
+  st.textContent='✓ Configuração carregada.';
+}
+document.getElementById('refreshAgentConfig').onclick=loadAgentConfig;
+document.getElementById('saveAgentConfig').onclick=async()=>{
+  const st=document.getElementById('agentConfigStatus'),session=await lexSession();
+  if(!session){st.textContent='Entre na Lex Prospect para salvar.';return}
+  if(!currentAgentId){st.textContent='Recarregue a configuração antes de salvar.';return}
+  st.textContent='Salvando…';
+  const configuracao={horario:document.getElementById('agentConfigHours').value,consulta_nao_cliente:Number(document.getElementById('agentConfigConsult').value||0),moeda:'BRL',pausa_humana_minutos:Number(document.getElementById('agentConfigPause').value||0),followups:Number(document.getElementById('agentConfigFollowups').value||0),mensagem_inicial:document.getElementById('agentConfigGreeting').value,solicitar_nome_apos_primeira_resposta:true,maximo_linhas:5,canais:['WhatsApp','Instagram','Facebook'],aprovacao_humana:true};
+  const {error}=await lexdb.from('agentes').update({nome:document.getElementById('agentConfigName').value.trim()||'Helena',funcao:document.getElementById('agentConfigRole').value.trim(),prompt:document.getElementById('agentConfigPrompt').value,ativo:document.getElementById('agentConfigActive').checked,configuracao,updated_at:new Date().toISOString()}).eq('id',currentAgentId);
+  st.textContent=error?'Erro: '+error.message:'✓ Configuração salva.';
+};
+loadLexPosts();loadSocialAccounts();loadProspectInbox();loadSocialSchedule();loadAgentConfig();
 refreshLexAuth();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}</script>
