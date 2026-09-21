@@ -244,7 +244,7 @@
   addEventListener('scroll',spy,{passive:true});spy()})();
 </script>
 <div id="lexAuthBar" style="margin:12px 18px 18px;padding:10px 12px;background:#111116;border:1px solid rgba(255,255,255,.10);border-radius:12px;display:flex;align-items:center;gap:8px;justify-content:flex-end"><span id="lexAuthState" style="font-size:13.5px;color:#aaa">Verificando acesso…</span><button id="lexLoginBtn" class="mini-btn">Entrar</button><button id="lexLogoutBtn" class="mini-btn" style="display:none">Sair</button></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/vendor/supabase.js"></script>
 <script>
 const LEX_URL='https://jnctyowjstchfofqfhnm.supabase.co',LEX_KEY='sb_publishable_ZBPR_AtzIi2kYH8XO1Jffg_iKnCdE0X',lexdb=supabase.createClient(LEX_URL,LEX_KEY);
 async function lexSession(){const {data:{session}}=await lexdb.auth.getSession();return session}
