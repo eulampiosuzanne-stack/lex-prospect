@@ -57,8 +57,9 @@
     $('#view').innerHTML=Lex.page('Motores e APIs','Diagnóstico real de credenciais e integrações.','<button id="refresh-health">Atualizar diagnóstico</button>')+Lex.loading();
     const health=await Lex.health(true), tests=health.tests||health;
     const rows=[
+      ['Google Places','Credencial',tests.google_places||tests.google],['OpenAI','Credencial',tests.openai],['Groq','Credencial',tests.groq],['Meta','Credencial OAuth',tests.meta],['Instagram','Conta social',tests.instagram],
       ['Extração de leads','prospect-extractor',tests.extractor||tests.google_places],['Saúde da prospecção','prospect-health',health._error?{error:health._error}:true],
-      ['Agente Lex','lex-agent',tests.groq||tests.openai],['Atendimento IA','prospect-chat-agent',tests.groq||tests.openai],['Social Media IA','generate-post-script',tests.groq||tests.openai],
+      ['Agente Lex','lex-agent',tests.lex_agent||tests.groq||tests.openai],['Atendimento IA','prospect-chat-agent',tests.chat_agent||tests.groq||tests.openai],['Social Media IA','generate-post-script',tests.social_ai||tests.groq||tests.openai],
       ['Publicação Instagram','social-publish-instagram',tests.instagram],['Meta / Instagram OAuth','instagram-oauth-start',tests.meta],['MCP Lex Prospect','lex-prospect-mcp',tests.mcp]
     ];
     $('#view').innerHTML=Lex.page('Motores e APIs','Diagnóstico real de credenciais e integrações.','<button id="refresh-health">Atualizar diagnóstico</button>')+
