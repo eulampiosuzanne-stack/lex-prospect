@@ -94,7 +94,18 @@
   }
   async function setSession(session){
     Lex.session=session;$('#auth').hidden=!!session;$('#app').hidden=!session;
-    if(session){$('#session-email').textContent=session.user?.email||'';await renderRoute()}
+    if(session){
+      $('#session-email').textContent=session.user?.email||'';
+      if(/access_token=|refresh_token=|error_description=/.test(location.hash)||new URLSearchParams(location.search).has('code')){
+        history.replaceState(null,'',location.pathname+'#/painel');
+      }
+      await renderRoute();
+    }
+  }
+  function showAuthError(){
+    const hash=new URLSearchParams(location.hash.replace(/^#/,'')),query=new URLSearchParams(location.search);
+    const message=hash.get('error_description')||query.get('error_description')||query.get('error');
+    if(message)$('#login-status').textContent='Não foi possível concluir este link: '+decodeURIComponent(message)+'. Solicite um novo link uma única vez.';
   }
   document.addEventListener('click',async e=>{
     const go=e.target.closest('[data-go]');if(go)Lex.navigate(go.dataset.go);
@@ -102,18 +113,22 @@
     if(e.target.id==='refresh-health'){Lex.state.health=null;renderRoute()}
   });
   document.addEventListener('submit',async e=>{
-    if(e.target.id==='login-form'){e.preventDefault();const st=$('#login-status'),email=$('#login-email').value.trim();st.textContent='Enviando link seguro…';const {error}=await Lex.db.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+'/#/painel',shouldCreateUser:false}});st.textContent=error?'Não foi possível enviar: '+error.message:'Link enviado. Abra o e-mail neste mesmo aparelho.';return}
+    if(e.target.id==='login-form'){e.preventDefault();const st=$('#login-status'),email=$('#login-email').value.trim(),button=e.submitter||$('button[type="submit"]',e.target);button.disabled=true;st.textContent='Enviando link seguro…';const {error}=await Lex.db.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+'/',shouldCreateUser:false}});button.disabled=false;st.textContent=error?'Não foi possível enviar: '+error.message:'Link enviado. Toque apenas uma vez no e-mail mais recente.';return}
     if(e.target.id==='agent-form'){e.preventDefault();const input=$('#agent-input'),msg=input.value.trim();if(!msg)return;$('#agent-log').insertAdjacentHTML('beforeend','<div class="bubble me">'+esc(msg)+'</div>');input.value='';$('#agent-status').textContent='Agente trabalhando…';try{const out=await Lex.api('lex-agent',{body:{message:msg,conversation_id:Lex.state.agentConversation||null}});Lex.state.agentConversation=out.conversation_id;$('#agent-log').insertAdjacentHTML('beforeend','<div class="bubble">'+esc(out.answer||out.message||'Resposta recebida sem conteúdo.')+'</div>');$('#agent-log').scrollTop=$('#agent-log').scrollHeight;$('#agent-status').textContent=''}catch(err){$('#agent-status').textContent='Erro: '+err.message}return}
     if(e.target.matches('.agent-config')){e.preventDefault();const f=e.target,data=Object.fromEntries(new FormData(f));data.ativo=f.ativo.checked;try{const {error}=await Lex.db.from('agentes').update(data).eq('id',f.dataset.id);if(error)throw error;Lex.toast('Configuração salva.')}catch(err){Lex.toast(err.message,true)}return}
     if(e.target.id==='intel-form'){e.preventDefault();Lex.store('inteligencia:'+e.target.dataset.kind,Object.fromEntries(new FormData(e.target)));Lex.toast('Configuração salva neste navegador.')}
   });
   addEventListener('hashchange',renderRoute);
   addEventListener('DOMContentLoaded',async()=>{
-    Lex.db=supabase.createClient(SUPABASE_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+    Lex.db=supabase.createClient(SUPABASE_URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit',storage:window.localStorage}});
     $('#logout').onclick=async()=>{await Lex.db.auth.signOut();await setSession(null);Lex.toast('Sessão encerrada.')};
-    Lex.db.auth.onAuthStateChange((_event,session)=>setSession(session));
-    const {data:{session}}=await Lex.db.auth.getSession();await setSession(session);
-    if(!location.hash)location.hash='#/painel';
+    Lex.db.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>{setSession(session).catch(error=>Lex.toast('Erro ao restaurar a sessão: '+error.message,true))},0)});
+    showAuthError();
+    const {data:{session},error}=await Lex.db.auth.getSession();
+    if(error)$('#login-status').textContent='Não foi possível restaurar a sessão: '+error.message;
+    await setSession(session);
+    if(!session&&!location.hash)location.hash='#/painel';
+    document.addEventListener('visibilitychange',async()=>{if(document.visibilityState!=='visible')return;const {data}=await Lex.db.auth.getSession();if(data.session&&!Lex.session)await setSession(data.session)});
     if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
   });
 })();
